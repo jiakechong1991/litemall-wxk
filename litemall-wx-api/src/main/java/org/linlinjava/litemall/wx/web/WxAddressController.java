@@ -21,7 +21,7 @@ import java.util.List;
  * 用户收货地址服务
  */
 @RestController
-@RequestMapping("/wx/address")
+@RequestMapping("/wx/address")  // 这是设置 路由表
 @Validated
 public class WxAddressController extends GetRegionService {
 	private final Log logger = LogFactory.getLog(WxAddressController.class);
@@ -39,7 +39,7 @@ public class WxAddressController extends GetRegionService {
 	 * @param userId 用户ID
 	 * @return 收货地址列表
 	 */
-	@GetMapping("list")
+	@GetMapping("list") // 二级 路由(并且标明这是get方法) 是一个组合注解，是@RequestMapping(method = RequestMethod.GET)的缩写。
 	public Object list(@LoginUser Integer userId) {
 		if (userId == null) {
 			return ResponseUtil.unlogin();
@@ -123,7 +123,7 @@ public class WxAddressController extends GetRegionService {
 	 * @param address 用户收货地址
 	 * @return 添加或更新操作结果
 	 */
-	@PostMapping("save")
+	@PostMapping("save")  // 二级路由(并标记这是post方法) 一个组合注解，是@RequestMapping(method = RequestMethod.POST)的缩写
 	public Object save(@LoginUser Integer userId, @RequestBody LitemallAddress address) {
 		if (userId == null) {
 			return ResponseUtil.unlogin();

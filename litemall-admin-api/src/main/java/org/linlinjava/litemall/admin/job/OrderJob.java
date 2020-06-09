@@ -41,7 +41,7 @@ public class OrderJob {
      * TODO
      * 注意，因为是相隔一天检查，因此导致订单真正超时时间是 [LITEMALL_ORDER_UNCONFIRM, 1 + LITEMALL_ORDER_UNCONFIRM]
      */
-    @Scheduled(cron = "0 0 3 * * ?")
+    @Scheduled(cron = "0 0 3 * * ?")  // 每天 3点 启动执行 (这个跟crontab一样,可以设置定时表达式)
     public void checkOrderUnconfirm() {
         logger.info("系统开启定时任务检查订单是否已经超期自动确认收货");
 
