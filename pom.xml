@@ -25,7 +25,6 @@
         <module>litemall-wx-api</module>
         <module>litemall-admin-api</module>
         <module>litemall-all</module>
-        <module>litemall-all-war</module>
     </modules>
 
     <dependencyManagement>

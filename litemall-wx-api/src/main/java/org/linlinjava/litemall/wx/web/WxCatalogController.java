@@ -22,15 +22,21 @@ import java.util.Map;
  * 类目服务
  */
 @RestController
-@RequestMapping("/wx/catalog")
-@Validated
+/*这是一个复合注解
+@Controller: 作用在一个类上,表示这是一个控制类, 向springboot说明 这个类将来会直接用来处理用户请求(它后面一定会接@RequestMapping)
+@ResponseBody: 表示这个类的方法返回之后,直接把结果写到HTTP的respinse body中.
+ */
+
+
+@RequestMapping("/wx/catalog")  // 说明这个类会 直接映射到路由表 /wx/catalog 上
+@Validated // 表示这个类会启动 参数验证检查 功能, 正式开启了这个类, 所以@NotNull 这些检查选项 才能使用,(有很多类似 @NotNull的 小注解 )
 public class WxCatalogController {
     private final Log logger = LogFactory.getLog(WxCatalogController.class);
 
-    @Autowired
+    @Autowired  // 这就是所谓的 单例, 他所标注的类, 是已经被其他注解单例好的, 所以@Autowired下面的类实例用的都是这个类的单例
     private LitemallCategoryService categoryService;
 
-    @GetMapping("/getfirstcategory")
+    @GetMapping("/getfirstcategory")   // 映射子 路由
     public Object getFirstCategory() {
         // 所有一级分类目录
         List<LitemallCategory> l1CatList = categoryService.queryL1();

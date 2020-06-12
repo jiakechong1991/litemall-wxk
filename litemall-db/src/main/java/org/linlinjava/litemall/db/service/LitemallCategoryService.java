@@ -11,11 +11,10 @@ import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Service  // 注解,来表示这是服务层
+@Service  // 注解,来表示这是服务层, 同时这个注解里面有@Component注解, 这样就把该类进行了 单例化
 public class LitemallCategoryService {
 
-    // 这个注解 所 标注的变量, 会成为
-    @Resource
+    @Resource  // 实例化注解(通过变量名称进行)
     private LitemallCategoryMapper categoryMapper;
     private LitemallCategory.Column[] CHANNEL = {LitemallCategory.Column.id, LitemallCategory.Column.name, LitemallCategory.Column.iconUrl};
 
