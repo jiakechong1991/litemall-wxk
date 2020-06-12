@@ -202,12 +202,12 @@ public class WxGoodsController {
 
 	/**
 	 * 商品分类类目
-	 *
+	 * http://localhost:8080/wx/goods/category?id=1005000  这是一个使用示例
 	 * @param id 分类类目ID
 	 * @return 商品分类类目
 	 */
-	@GetMapping("category")
-	public Object category(@NotNull Integer id) {
+	@GetMapping("category")  // 定义 get方法
+	public Object category(@NotNull Integer id) {  // @NotNull注解 能够自动帮助我们检查被标记的参数是否为空, 不符合条件就会报错
 		LitemallCategory cur = categoryService.findById(id);
 		LitemallCategory parent = null;
 		List<LitemallCategory> children = null;
